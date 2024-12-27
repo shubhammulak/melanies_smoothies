@@ -22,6 +22,10 @@ my_dataframe = session.table("smoothies.public.fruit_options").select (col('frui
 
 ingredient_list = st.multiselect('Choose upto 5 Ingredients:', my_dataframe,max_selections = 5)
 
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+#st.text(smoothiefroot_response.jason())
+sf_df = st.dataframe(data=smoothiefroot_response.jason(), use_container_width=True)
+
 if ingredient_list:
    #st.write(ingredient_list)
    #st.text(ingredient_list)
@@ -46,9 +50,6 @@ if ingredient_list:
         session.sql(my_insert_stmt).collect()
         st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
     
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-#st.text(smoothiefroot_response.jason())
-sf_df = st.dataframe(data = smoothiefroot_response.jason(), use_container_width = True)
 
 
 
