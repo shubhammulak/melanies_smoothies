@@ -24,7 +24,7 @@ ingredient_list = st.multiselect('Choose upto 5 Ingredients:', my_dataframe,max_
 
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 #st.text(smoothiefroot_response.jason())
-sf_df = st.dataframe(data=smoothiefroot_response.jason(), use_container_width=True)
+sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
 if ingredient_list:
    #st.write(ingredient_list)
